@@ -1,11 +1,11 @@
-import {pathToRegexp} from 'path-to-regexp'
+import { pathToRegexp } from 'path-to-regexp'
 
 
-function compilePath(path,options){
+function compilePath(path, options) {
     const keys = [];
-    const regexp = pathToRegexp(path,keys,options);
-   
-    return {keys,regexp}
+    const regexp = pathToRegexp(path, keys, options);
+
+    return { keys, regexp }
 }
 
 /**
@@ -17,24 +17,25 @@ function compilePath(path,options){
  * strict 是否严格匹配 后面能不能有可选的/
  * sensitive 是否是大小写敏感
  */
-function matchPath(pathname,options={}){
-    let {path="/",exact=false,strict=false,sensitive=false} = options;
-    let {keys,regexp} = compilePath(path,{end:exact,strict,sensitive});
+
+function matchPath(pathname, options = {}) {
+    let { path = "/", exact = false, strict = false, sensitive = false } = options;
+    let { keys, regexp } = compilePath(path, { end: exact, strict, sensitive });
     const match = regexp.exec(pathname);
 
-    if(!match)return null;
-    const [url,...values] = match;
+    if (!match) return null;
+    const [url, ...values] = match;
     const isExact = pathname === url;
     // 如果要求精确 但不精确 也返回null
-    if(exact && !isExact) return null;
+    if (exact && !isExact) return null;
     return {
         path, // Route的path
         url, // 浏览器的url
         isExact, // 是否精确匹配
-        patams:keys.reduce((memo,key,index)=>{
+        patams: keys.reduce((memo, key, index) => {
             memo[key.name] = values[index];
             return memo;
-        },{})
+        }, {})
     }
 }
 export default matchPath
