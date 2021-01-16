@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+
+  <title>React App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!-- <ul>
+    <li><a href="#/a">/a</a></li>
+    <li><a href="#/b">/b</a></li>
+  </ul>
+   -->
+<script>
+  /*
+   window.addEventListener('hashchange',function(){
+     console.log('location', window.location);
+     root.innerHTML = window.location.hash.slice(1)
+   })
+ /*
+
+ 
+   /*
+   var historyObj = window.history;
+   setTimeout(() => {
+        // state,title,url
+        historyObj.pushState({ page: 1 }, { title: 'page1' }, '/page1');//page1
+    }, 1000);
+    setTimeout(() => {
+        historyObj.pushState({ page: 2 }, { title: 'page2' }, '/page2');//page2       
+    }, 2000);
+    setTimeout(() => {
+        historyObj.pushState({ page: 3 }, { title: 'page3' }, '/page3');//page3       
+    }, 3000);
+    setTimeout(() => {
+        historyObj.back();//historyObj.go(-1);//page2
+    }, 4000);
+    window.addEventListener('popstate',(event)=>{
+      console.log('location', window.location);
+      root.innerHTML = window.location.pathname
+    })
+    ;(function(historyObj){
+        let oldPushState = historyObj.pushState;
+        historyObj.pushState = function(state,title,url){
+          oldPushState.apply(history,arguments);
+          root.innerHTML = window.location.pathname
+        }
+
+    })(historyObj)
+  */
+
+
+    // let obj = [
+    //   {
+    //     id:1,
+    //     parent_id:0,
+    //     name:'权限管理'
+    //   },
+    //   {
+    //     id:2,
+    //     parent_id:1,
+    //     name:'用户管理'
+    //   },
+    //   {
+    //     id:3,
+    //     parent_id:1,
+    //     name:'角色管理'
+    //   },
+    //   {
+    //     id:4,
+    //     parent_id:3,
+    //     name:'订单管理'
+    //   }
+    // ]
+
+    // function treeTransform(obj){
+    //   let rootMenu = [];
+    //   let map = {};
+    //   obj.forEach(resource=>{
+    //     resource.children = [];
+    //     map[resource.id] = resource;
+      
+    //     if(resource.parent_id === 0){
+    //       rootMenu.push(resource)
+    //     }else {
+    //       map[resource.parent_id].children.push(resource)
+    //     }
+    //   })
+     
+    //   return rootMenu;
+    // }
+    // console.log(treeTransform(obj));
+</script>
+</body>
+
+</html>
