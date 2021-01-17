@@ -24,13 +24,11 @@ class Router extends React.Component {
     }
     render() {
        
-
         let value = {//通过value向下层传递数据
             location: this.state.location,
             history: this.props.history,
             match:Router.computeRootMatch(this.state.location)
         }
-        console.log(value);
         return (
             <RouterContext.Provider value={value}>
                 {this.props.children}

@@ -23,7 +23,7 @@ function createHashHistory(){
     function goForward(){
         go(1);
     }
-    window.addEventListener('hashchange',()=>{
+    function hashChange(){
         let pathname = window.location.hash.slice(1);
         Object.assign(history,{action,location:{pathname,state}});
         if(action === 'PUSH'){
@@ -32,7 +32,8 @@ function createHashHistory(){
             stack[index]= history.location;
         }
         listeners.forEach(listener=>listener(history.location));
-    });
+    }
+    window.addEventListener('hashchange',hashChange);
     function push(pathname,nextState){
         action = 'PUSH';
         if(typeof pathname === 'object'){
@@ -63,7 +64,15 @@ function createHashHistory(){
         listen,
         location:{pathname:'/',state:undefined},
     }
-    window.location.hash = window.location.hash?window.location.hash.slice(1):'/';
+  
+    if(window.location.hash){
+        window.location.hash = window.location.hash.slice(1)
+        hashChange()
+    }else {
+        window.location.hash='/'
+    }
+    // window.location.hash = window.location.hash?window.location.hash.slice(1):'/';
+    // console.log('window.location.hash',window.location.hash);
     return history;
 }
 
