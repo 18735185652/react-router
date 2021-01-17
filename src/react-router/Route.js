@@ -6,14 +6,20 @@ class Route extends React.Component {
     render() {
         const { history, location } = this.context;
         console.log('location: ', location);
-        const { component: RouteComponent, computedMatch } = this.props;
+        const { component: RouteComponent, computedMatch,render } = this.props;
 
         const match = computedMatch ? computedMatch : matchPath(location.pathname, this.props)
         let routeProps = { history, location };
         let element = null;
         if (match) {
+            // 路由属性 如果一个组件是Route或者说路由组件渲染的，他们routeProps={}
             routeProps.match = match
-            element = <RouteComponent {...routeProps} />
+            if(RouteComponent){
+                element = <RouteComponent {...routeProps} />
+            }else if(render){
+                element = render(routeProps) 
+            }
+            
         }
         return element;
     }

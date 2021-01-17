@@ -4,7 +4,8 @@ import {BrowserRouter as Router,Route,Switch,Redirect,Link} from './react-router
 import Home from './component/Home'
 import User from './component/User'
 import Profile from './component/Profile'
-
+import Protected from './component/Protected'
+import Login from './component/Login'
 
 // Redirect 一般配合Switch使用
 ReactDOM.render(
@@ -17,8 +18,10 @@ ReactDOM.render(
     <Switch>
         <Route path='/' exact={true} component={Home}/>
         <Route path='/user' component={User}/>
-        <Route path='/profile' component={Profile}/>
-        <Redirect to='/' />
+        <Route path='/login' component={Login}/>
+
+        <Protected path='/profile' component={Profile}/>
+        {/* <Redirect to='/' /> */}
     </Switch>
     
         {/* <Route path='/' exact={false} component={Home}/>

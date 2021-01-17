@@ -6,7 +6,6 @@ import {Route,Link} from '../react-router-dom'
 
 
 const User = (props) =>{
-    console.log('props: ', props);
 
     return (
         <div>
