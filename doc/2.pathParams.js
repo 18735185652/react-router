@@ -23,5 +23,7 @@ let params = paramsNames.reduce((memo, key, index) => {
 
 let aa = pathToRegexp('/user', keys, { end: false, sensitive: false, strict: false });
 
-
-console.log('regexp: ', '/user/aa'.match(aa));
+//end就是Route的exact的值 
+//false /user可以匹配到 /user/xxx 
+//true 只能匹配 /user
+console.log('regexp: ', '/user'.match(aa));
