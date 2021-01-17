@@ -35,7 +35,7 @@ function matchPath(pathname, options = {}) {
         path, // Route的path
         url, // 浏览器的url
         isExact, // 是否精确匹配
-        patams: keys.reduce((memo, key, index) => {
+        params: keys.reduce((memo, key, index) => {
             memo[key.name] = values[index];
             return memo;
         }, {})

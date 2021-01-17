@@ -23,10 +23,9 @@ class Router extends React.Component {
         this.unlisten && this.unlisten();
     }
     render() {
-       
         let value = {//通过value向下层传递数据
             location: this.state.location,
-            history: this.props.history,
+            history:this.props.history,
             match:Router.computeRootMatch(this.state.location)
         }
         return (

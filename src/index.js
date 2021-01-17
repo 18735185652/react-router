@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router,Route,Switch,Redirect} from './react-router-dom'
+import {BrowserRouter as Router,Route,Switch,Redirect,Link} from './react-router-dom'
 import Home from './component/Home'
 import User from './component/User'
 import Profile from './component/Profile'
@@ -9,6 +9,11 @@ import Profile from './component/Profile'
 // Redirect 一般配合Switch使用
 ReactDOM.render(
   <Router>
+    <ul>
+      <li>< Link to='/' > 首页</ Link>  </li>
+      <li>< Link to='/user' > 用户管理</ Link>  </li>
+      <li>< Link to='/profile' > 个人中心</ Link>  </li>
+    </ul>
     <Switch>
         <Route path='/' exact={true} component={Home}/>
         <Route path='/user' component={User}/>
