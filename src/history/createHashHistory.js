@@ -31,7 +31,7 @@ function createHashHistory() {
         } else if (action === 'REPLACE') {
             stack[index] = history.location;
         }
-        listeners.forEach(listener => listener(history.location));
+        listeners.forEach(listener => listener(history.location,history.action));
     }
     window.addEventListener('hashchange', hashChange);
 

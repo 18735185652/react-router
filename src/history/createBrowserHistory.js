@@ -19,7 +19,7 @@ function createBrowserHistory(props) {
     function setState(newState) {
         Object.assign(history, newState);
         history.length = globalHistory.length;
-        listeners.forEach(listener => listener(history.location));
+        listeners.forEach(listener => listener(history.location,history.action));
     }
     /**
      * @param {*} pathname 可能是对象，也可能是字符串
